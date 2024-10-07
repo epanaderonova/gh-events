@@ -4,6 +4,15 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - main # main
+      - 'dev-*' # dev-new dev-this-is-new
+      - 'feat/**' # feat/new feat/new/button
+      # developer-1 is not covered by this filters
+    paths-ignore:
+      - '.github/workflows/*' # only triggered if files inside this folders are changed - the opposite
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
